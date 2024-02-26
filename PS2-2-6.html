@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Problem 2-2-6</title>
+  <style>
+    #displayStates {
+      border: 1px solid black;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding: 10px;
+      width: 200px; 
+      min-height: 100px; 
+      list-style-type: decimal; 
+    }
+    .select-container{
+        display: flex;
+        align-items: center;
+        margin: 10px;
+        width: 200px; 
+        
+    }
+    .select-container select {
+        min-height: 100px;
+        width: 200px;
+    }
+
+    label {
+          margin-right: 10px;
+        }
+  </style>
+  <script>
+    window.onload = function () {
+      var states = ["Mass", "NYC", "Washington", "Maine", "Arizona", "Virginia", "Florida", "Cali", "Utah", "Alabama"];
+      var list = document.getElementById("stateSelect");
+      var display = document.getElementById("displayStates");
+
+      states.forEach(function(state) {
+        var option = document.createElement("option");
+        option.value = state;
+        option.text = state;
+        list.appendChild(option);
+      });
+      list.selectedIndex = 0; 
+
+      document.getElementById("add").addEventListener("click", function() {
+        var selectedIndex = list.selectedIndex;
+        var selectedState = list.options[selectedIndex].text;
+        
+        // Remove 
+        list.remove(selectedIndex);
+        
+        var listItem = document.createElement("li");
+        listItem.textContent = selectedState;
+        display.appendChild(listItem);
+      });
+
+      document.getElementById("clear").addEventListener("click", function() {
+        // Clear 
+        display.innerHTML = "";
+        
+        // Clear and restore 
+        list.innerHTML = ""; 
+        states.forEach(function(state) {
+          var option = document.createElement("option");
+          option.value = state;
+          option.text = state;
+          list.appendChild(option);
+        });
+      });
+    };
+  </script>
+</head>
+<body>
+  <label for="stateSelect">Pick a state:</label>
+  <div class="select-container">
+      <select id="stateSelect" size="10"></select>
+  </div>
+<button id="add" type="button">Add State</button>
+<div id="displayStates"></div> <button id="clear" type="button">Clear States</button>
+</body>
+</html>

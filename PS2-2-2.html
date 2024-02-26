@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem 2-2-2</title>
+</head>
+<body>
+    <script>
+        var names = "Pat, Chris, Marlon, Ferncroft, Assunta";
+        var arr = names.split(", ");
+        //var numberedList = arr.map((name, index) => `<li>${index + 1}. ${name}</li>`).join("");
+        var res = arr.map((name, index) => `${index + 1}. ${name}`).join("<br>");
+
+        document.write(res);
+    </script>
+</body>
+</html> 
